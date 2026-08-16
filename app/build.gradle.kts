@@ -6,12 +6,12 @@ plugins {
 android {
     namespace = "com.julianrottenberg.verbatide"
 
-    // APK file name: verbatide-vX.Y.Z.apk (versionName is set per-release)
+    // APK file name: verbatide-vX.Y.Z.apk
     androidComponents {
-        onVariants { v ->
-            v.outputs.forEach { out ->
+        onVariants { variant ->
+            variant.outputs.forEach { out ->
                 (out as com.android.build.api.variant.impl.VariantOutputImpl).outputFileName.set(
-                    "verbatide-${'$'}{v.versionName}.apk"
+                    "verbatide-v" + variant.versionName.get() + ".apk"
                 )
             }
         }
@@ -22,8 +22,8 @@ android {
         applicationId = "com.julianrottenberg.verbatide"
         minSdk = 30
         targetSdk = 35
-        versionCode = 22
-        versionName = "0.9.7"
+        versionCode = 25
+        versionName = "0.9.10"
 
         ndk { abiFilters += "arm64-v8a" }
     }
